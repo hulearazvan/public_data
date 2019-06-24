@@ -12,5 +12,4 @@ with codecs.open(filepath,'r', 'utf-8') as fp:
        unaccented_string = unidecode.unidecode(line)
        f.write(unaccented_string)
        cnt += 1
-
 f.close()

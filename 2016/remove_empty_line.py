@@ -2,14 +2,13 @@
 import csv
 import time
 
-situatii_file = open('situatii1.txt')
-situatii_csv = csv.reader(situatii_file, delimiter=',')
+#situatii_file = open('situatii1.txt')
+#situatii_csv = csv.reader(situatii_file, delimiter=',')
 
 def match_code(code_cui):
-    #with open('situatii1.txt') as csvfile:
-    #    readCSV = csv.reader(csvfile, delimiter=',')
-        #for row in readCSV:
-        for row in situatii_csv:
+    with open('situatii_2016.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
             result = []
             if len(row) is 22:
                 if (row[0] == code_cui):
@@ -17,7 +16,6 @@ def match_code(code_cui):
                         caen = row[1]
                     except IndexError:
                         caen = 'none'
-
                     try:
                         active_imobilizate = row[2]
                     except IndexError:
@@ -27,7 +25,6 @@ def match_code(code_cui):
                         active_circulante = row[3]
                     except IndexError:
                         active_circulante = 'none'
-
                     try:        
                         stocuri = row[4]
                     except IndexError:
@@ -95,7 +92,7 @@ def match_code_1():
                 stare_firma = row[4]
                 adresa = row[5]
                 find_result = match_code(code_cui)
-                if find_result:                   
+                if find_result:
                     caen = find_result[1]
                     active_imobilizate = find_result[1]
                     active_circulante = find_result[2]
@@ -153,9 +150,6 @@ def match_code_1():
                     myfile.close()
                     after_csv = time.time()
 
-                    print ("match_code" + str(find_res_time - start))
-                    print ("csv creation " + str(after_csv-before_csv))
-
 def match_code_2():
     with open('final2016_2.csv') as csvfile:
         readCSV = csv.reader(csvfile, delimiter='|')
@@ -163,7 +157,7 @@ def match_code_2():
             if len(row) is 6:
                 result = []
                 nume = row[0]
-                code_cui = row[1]
+                code_cui = int(row[1])
                 cod_matr = row[2]
                 euid = row[3]
                 stare_firma = row[4]
@@ -229,11 +223,11 @@ def match_code_2():
 def match_code_3():
     with open('final2016_3.csv') as csvfile:
         readCSV = csv.reader(csvfile, delimiter='|')
-        for row in readCSV:            
+        for row in readCSV:
             if len(row) is 6:
                 result = []
                 nume = row[0]
-                code_cui = row[1]
+                code_cui = int(row[1])
                 cod_matr = row[2]
                 euid = row[3]
                 stare_firma = row[4]
@@ -299,11 +293,11 @@ def match_code_3():
 def match_code_4():
     with open('final2016_4.csv') as csvfile:
         readCSV = csv.reader(csvfile, delimiter='|')
-        for row in readCSV:            
+        for row in readCSV:
             if len(row) is 6:
                 result = []
                 nume = row[0]
-                code_cui = row[1]
+                code_cui = int(row[1])
                 cod_matr = row[2]
                 euid = row[3]
                 stare_firma = row[4]
