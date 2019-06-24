@@ -1,9 +1,12 @@
 #DENUMIRE^CUI^COD_INMATRICULARE^EUID^STARE_FIRMA^ADRESA
 import csv
 
+csvfile = open("situatii1.txt")
+readCSV = csv.reader(csvfile, delimiter=",")
+
 def match_code(code_cui):
-    with open('situatii1.txt') as csvfile:
-        readCSV = csv.reader(csvfile, delimiter=',')
+    #with open('situatii1.txt') as csvfile:
+        #readCSV = csv.reader(csvfile, delimiter=',')
         for row in readCSV:
             result = []
             if len(row) is 22:
@@ -12,27 +15,22 @@ def match_code(code_cui):
                         caen = row[1]
                     except IndexError:
                         caen = 'none'
-
                     try:
                         active_imobilizate = row[2]
                     except IndexError:
                         active_imobilizate = 'none'
-
                     try:
                         active_circulante = row[3]
                     except IndexError:
                         active_circulante = 'none'
-
                     try:        
                         stocuri = row[4]
                     except IndexError:
                         stocuri = 'none'                        
-
                     try:
                         creante = row[5]
                     except IndexError:
                         creante = 'none'
-
                     try:        
                         casa_conturi = row[6]
                     except IndexError:
